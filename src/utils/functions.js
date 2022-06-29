@@ -1,8 +1,6 @@
 import {
   TROOPS,
-  SPELLS,
-  MAXTROOPS,
-  MAXSPELLS
+  SPELLS
 } from './data';
 
 //encode army into CoC share link
@@ -14,7 +12,7 @@ export function encodeLink(army) {
   if (troops.length !== 0) {
     resStr += 'u';
     for (let i in troops) {
-      resStr = resStr + troops[i][1].toString() + 'x' + TROOPS[troops[i][0]][3] + '-';
+      resStr = resStr + troops[i][1].toString() + 'x' + TROOPS[troops[i][0]][4] + '-';
     }
     resStr = resStr.slice(0, -1);
   }
@@ -22,7 +20,7 @@ export function encodeLink(army) {
   if (spells.length !== 0) {
     resStr += 's';
     for (let i in spells) {
-      resStr = resStr + spells[i][1].toString() + 'x' + SPELLS[spells[i][0]][3] + '-';
+      resStr = resStr + spells[i][1].toString() + 'x' + SPELLS[spells[i][0]][4] + '-';
     }
     resStr = resStr.slice(0, -1);
   }
@@ -76,7 +74,7 @@ export function findKeyOnProp(myProp, myDic) {
   let i = 0;
   let found = false;
   while (!found) {
-    myDic[i][3] === myProp ? found = true : i++;
+    myDic[i][4] === myProp ? found = true : i++;
   }
   return i;
 }
@@ -85,9 +83,58 @@ export function findKeyOnProp(myProp, myDic) {
 export function arrayOnlyProp(myArray, myCond) {
   let resTab = []
   for (let i in myArray) {
-    if (myArray[i][2] <= myCond) {
+    if (myArray[i][3] <= myCond) {
       resTab.push(myArray[i]);
     }
   }
+  return resTab;
+}
+
+//Split arrays depending on type
+export function divideArray() {
+  let resTab = []
+  let tempTab = []
+
+  //Pink troops
+  for (let i=0; i<15; i++) {
+    tempTab.push(TROOPS[i]);
+  }
+  resTab.push(tempTab);
+  tempTab = [];
+
+  //Dark troops
+  for (let i=15; i<24; i++) {
+    tempTab.push(TROOPS[i]);
+  }
+  resTab.push(tempTab);
+  tempTab = [];
+
+  //Pink spells
+  for (let i=0; i<7; i++) {
+    tempTab.push(SPELLS[i]);
+  }
+  resTab.push(tempTab);
+  tempTab = [];
+
+  //Dark spells
+  for (let i=7; i<11; i++) {
+    tempTab.push(SPELLS[i]);
+  }
+  resTab.push(tempTab);
+  tempTab = [];
+
+  //Siege Machines
+  for (let i=24; i<30; i++) {
+    tempTab.push(TROOPS[i]);
+  }
+  resTab.push(tempTab);
+  tempTab = [];
+
+  //Super Troops
+  for (let i=30; i<44; i++) {
+    tempTab.push(TROOPS[i]);
+  }
+  resTab.push(tempTab);
+
   return resTab;
 }

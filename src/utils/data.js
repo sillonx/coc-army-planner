@@ -1,65 +1,79 @@
-//index : ['name', 'housingSpace', 'townhallRequired', 'idURL']
+//['index', 'name', 'housingSpace', 'townhallRequired', 'idURL']
 export const TROOPS = [ 
     //Troops
-    /*0*/['Barbarian', 1, 1, '0'],
-    /*1*/['Archer', 1, 1, '1'],
-    /*2*/['Giant', 5, 1, '3'],
-    /*3*/['Goblin', 1, 2, '2'],
-    /*4*/['Wall Breaker', 2, 3, '4'],
-    /*5*/['Balloon', 5, 4, '5'],
-    /*6*/['Wizard', 4, 5, '6'],
-    /*7*/['Healer', 14, 6, '7'],
-    /*8*/['Dragon', 20, 7, '8'],
-    /*9*/['P.E.K.K.A', 25, 8, '9'],
-    /*10*/['Baby Dragon', 10, 9, '23'],
-    /*11*/['Miner', 6, 10, '24'],
-    /*12*/['Electro Dragon', 30, 11, '59'],
-    /*13*/['Yeti', 18, 12, '53'],
-    /*14*/['Dragon Rider', 25, 13, ''],
+    [0,'Barbarian', 1, 1, '0'],
+    [1,'Archer', 1, 1, '1'],
+    [2,'Giant', 5, 1, '3'],
+    [3,'Goblin', 1, 2, '2'],
+    [4,'Wall Breaker', 2, 3, '4'],
+    [5,'Balloon', 5, 4, '5'],
+    [6,'Wizard', 4, 5, '6'],
+    [7,'Healer', 14, 6, '7'],
+    [8,'Dragon', 20, 7, '8'],
+    [9,'P.E.K.K.A', 25, 8, '9'],
+    [10,'Baby Dragon', 10, 9, '23'],
+    [11,'Miner', 6, 10, '24'],
+    [12,'Electro Dragon', 30, 11, '59'],
+    [13,'Yeti', 18, 12, '53'],
+    [14,'Dragon Rider', 25, 13, '65'],
     
     //Dark Troops
-    /*15*/['Minion', 2, 7, '10'],
-    /*16*/['Hog Rider', 5, 7, '11'],
-    /*17*/['Valkyrie', 8, 8, '12'],
-    /*18*/['Golem', 30, 8, '13'],
-    /*19*/['Witch', 12, 9, '15'],
-    /*20*/['Lava Hound', 30, 9, '17'],
-    /*21*/['Bowler', 6, 10, '22'],
-    /*22*/['Ice Golem', 15, 11, '58'],
-    /*23*/['Headhunter', 6, 12, '82'],
+    [15,'Minion', 2, 7, '10'],
+    [16,'Hog Rider', 5, 7, '11'],
+    [17,'Valkyrie', 8, 8, '12'],
+    [18,'Golem', 30, 8, '13'],
+    [19,'Witch', 12, 9, '15'],
+    [20,'Lava Hound', 30, 9, '17'],
+    [21,'Bowler', 6, 10, '22'],
+    [22,'Ice Golem', 15, 11, '58'],
+    [23,'Headhunter', 6, 12, '82'],
   
     //Siege Machines
-    /*24*/['Wall Wrecker',1,12,'51'],
-    /*25*/['BattleBlimp',1,12,'52'],
-    /*26*/['Stone Slammer',1,12,'62'],
-    /*27*/['Siege Barracks',1,13,''],
-    /*28*/['Log Launcher',1,13,''],
-    /*29*/['Flame Flinger',1,14,'']
+    [24,'Wall Wrecker',1,12,'51'],
+    [25,'BattleBlimp',1,12,'52'],
+    [26,'Stone Slammer',1,12,'62'],
+    [27,'Siege Barracks',1,13,'75'],
+    [28,'Log Launcher',1,13,'87'],
+    [29,'Flame Flinger',1,14,''],
   
     //Super Troops
+    [30,'Super Barbarian',5,11,'26'],
+    [31,'Super Archer',12,11,'27'],
+    [32,'Super Giant',10,12,'29'],
+    [33,'Sneaky Goblin',3,11,'55'],
+    [34,'Super Wall Breaker',8,11,'28'],
+    [35,'Rocket Balloon',8,12,'57'],
+    [36,'Super Wizard',10,12,'83'],
+    [37,'Super Dragon',40,12,'81'],
+    [38,'Inferno Dragon',15,12,''],
+    [39,'Super Minion',12,12,'84'],
+    [40,'Super Valkyrie',20,12,'64'],
+    [41,'Super Witch',40,12,'66'],
+    [42,'Ice Hound',40,12,'76'],
+    [43,'Super Bowler',30,12,'80'],
 ];
 
-//index : ['name', 'housingSpace', 'townhallRequired', 'idURL']
+//['index', 'name', 'housingSpace', 'townhallRequired', 'idURL']
 export const SPELLS = [
     //Spells
-    /*0*/['Lightning', 1, 5, '0'],
-    /*1*/['Healing', 2, 6, '1'],
-    /*2*/['Rage', 2, 7, '2'],
-    /*3*/['Jump', 2, 9, '3'],
-    /*4*/['Freeze', 1, 9, '5'],
-    /*5*/['Clone', 3, 10, '16'],
-    /*5*/['Invisibility', 1, 11, '35'],
+    [0,'Lightning', 1, 5, '0'],
+    [1,'Healing', 2, 6, '1'],
+    [2,'Rage', 2, 7, '2'],
+    [3,'Jump', 2, 9, '3'],
+    [4,'Freeze', 1, 9, '5'],
+    [5,'Clone', 3, 10, '16'],
+    [6,'Invisibility', 1, 11, '35'],
   
     //Dark Spells
-    /*7*/['Poison', 1, 8, '9'],
-    /*8*/['Earthquake', 1, 8, '10'],
-    /*8*/['Haste', 1, 9, '11'],
-    /*10*/['Skeleton', 1, 9, '17'],
-    /*11*/['Bat', 1, 10, '28']
+    [7,'Poison', 1, 8, '9'],
+    [8,'Earthquake', 1, 8, '10'],
+    [9,'Haste', 1, 9, '11'],
+    [10,'Skeleton', 1, 9, '17'],
+    [11,'Bat', 1, 10, '28']
 ];
 
 //TH_level : max_troops
-export const MAXTROOPS = {
+export const MAX_TROOPS = {
     '1' : 20,
     '2' : 30,
     '3' : 70,
@@ -77,7 +91,7 @@ export const MAXTROOPS = {
 };
 
 //TH_level : max_spells
-export const MAXSPELLS = {
+export const MAX_SPELLS = {
     '1' : 0,
     '2' : 0,
     '3' : 0,
@@ -95,7 +109,7 @@ export const MAXSPELLS = {
 };
 
 //TH_level : max_spells
-export const MAXMACHINES = {
+export const MAX_MACHINES = {
     '1' : 0,
     '2' : 0,
     '3' : 0,
@@ -105,11 +119,29 @@ export const MAXMACHINES = {
     '7' : 0,
     '8' : 0,
     '9' : 0,
-    '10' : 1,
-    '11' : 1,
+    '10' : 0,
+    '11' : 0,
     '12' : 1,
     '13' : 1,
     '14' : 1
+};
+
+//TH_level : max_boosted
+export const MAX_BOOSTED = {
+    '1' : 0,
+    '2' : 0,
+    '3' : 0,
+    '4' : 0,
+    '5' : 0,
+    '6' : 0,
+    '7' : 0,
+    '8' : 0,
+    '9' : 0,
+    '10' : 0,
+    '11' : 2,
+    '12' : 2,
+    '13' : 2,
+    '14' : 2
 };
 
 //current highest TH
