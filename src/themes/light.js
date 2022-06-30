@@ -5,31 +5,34 @@ const LightPalette = createTheme({
         mode: 'light',
         common: {
             black : '#000000',
-            white : '#ffffff'
+            white : '#FFFFFF'
         },
         navbar: {
-            background: '#f1f1f1',
+            background: '#F1F1F1',
             text: '#000000',
-            textHover: '#E6B74B',
-            buttons: '#E6B74B'
+            textHover: '#FAD248',
+            buttons: '#FAD248'
+        },
+        buttons: {
+            main: '#FAD248'
         },
         primary: {
             main: '#DD0000'
         },
         secondary: {
-            main: '#ffffff'
+            main: '#FFFFFF'
         },
         error: {
-            main: '#ff4400'
+            main: '#FF4400'
           },
         warning: {
-            main: '#ff4400'
+            main: '#FFA01F'
         },
         info: {
-            main: '#ff4400'
+            main: '#1F8FFF'
         },
         success: {
-            main: '#ff4400'
+            main: '#5FFF1F'
         },
         grey: {
 
@@ -39,8 +42,8 @@ const LightPalette = createTheme({
             secondary: 'rgba(0,0,0,0.6)'
         },
         background: {
-            default: '#f0f0f0',
-            paper: '#fdfdfd'
+            default: '#EEEEEE',
+            paper: '#FDFDFD'
         },
         action: {
 

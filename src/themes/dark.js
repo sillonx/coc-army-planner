@@ -5,31 +5,34 @@ const DarkPalette = createTheme({
         mode: 'dark',
         common: {
             black : '#000000',
-            white : '#ffffff'
+            white : '#FFFFFF'
         },
         navbar: {
             background: '#272727',
-            text: '#ffffff',
-            textHover: '#E6B74B',
-            buttons: '#E6B74B'
+            text: '#FFFFFF',
+            textHover: '#FAD248',
+            buttons: '#FAD248'
+        },
+        buttons: {
+            main: '#FAD248'
         },
         primary: {
             main: '#DD0000'
         },
         secondary: {
-            main: '#f03c5a'
+            main: '#000000'
         },
         error: {
-            main: '#ff4400'
+            main: '#FF4400'
           },
         warning: {
-            main: '#ff4400'
+            main: '#FFA01F'
         },
         info: {
-            main: '#ff4400'
+            main: '#1F8FFF'
         },
         success: {
-            main: '#ff4400'
+            main: '#5FFF1F'
         },
         grey: {
 

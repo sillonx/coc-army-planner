@@ -7,11 +7,14 @@ import {
     Avatar,
     Typography,
     TextField,
-    Button
+    Button,
+    IconButton,
+    Fade
 } from '@mui/material';
 
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 import {
     TROOPS,
@@ -30,11 +33,50 @@ import {
     encodeLink
 } from '../utils/functions';
 
+import barbarian from '../static/images/troops/barbarian.png';
+import archer from '../static/images/troops/archer.png';
+//https://clashofclans.fandom.com/wiki/Army
+import th11 from '../static/images/townhalls/th11.png';
+import th12 from '../static/images/townhalls/th12.png';
+import th13 from '../static/images/townhalls/th13.png';
+import th14 from '../static/images/townhalls/th14.png';
+//https://clashofclans.fandom.com/wiki/Town_Hall
+
+var troopsImages = [
+    barbarian,
+    archer
+];
+
+var spellsImages = [
+
+]
+
+var machinesImages = [
+
+]
+
+var townHallsImages = [
+    th14,
+    th14,
+    th14,
+    th14,
+    th14,
+    th14,
+    th14,
+    th14,
+    th14,
+    th14,
+    th11,
+    th12,
+    th13,
+    th14
+]
 
 export default function MainPage() {
 
     const [importLink, setImportLink] = useState('');
     const [exportLink, setExportLink] = useState('');
+    const [visible, setVisible] = useState(false);
 
     let tempTab = divideArray(TROOPS, SPELLS);
     const pTroops = tempTab[0];
@@ -325,47 +367,51 @@ export default function MainPage() {
         setExportLink(encodeLink([currentTroops, currentSpells]));
     }
 
+    const copyClipboard = () => {
+        navigator.clipboard.writeText(exportLink);
+        setVisible(true);
+        setTimeout(() => { setVisible(false); }, 2800);
+      }
+
     return (
         <>
-            <Stack direction='column'>
-                <TextField value={importLink} placeholder='https://link.clashofclans.com/en?action=CopyArmy&army=' onChange={(e) => {setImportLink(e.target.value)}}></TextField>
-                <Button onClick={importArmy} endIcon={<FileDownloadIcon/>}>Import</Button>
-            </Stack>
-            <Stack direction='row' spacing={5} sx={{ maxWidth: 500 }} pt={5} pl={5}>
-                <Slider
-                    value={currentTownHall}
-                    valueLabelDisplay="auto"
-                    min={1}
-                    max={HIGHEST_TH}
-                    onChange={handleSlideTH}
-                    />
-                <Typography>TH {currentTownHall}</Typography>
+            <Stack direction='column' pt={5} spacing={2} alignItems='center' justifyContent='center'>
+                <TextField sx={{ width:450 }} value={importLink} placeholder='https://link.clashofclans.com/en?action=CopyArmy&army=' onChange={(e) => setImportLink(e.target.value)}></TextField>
+                <Button size='large' variant='contained' onClick={importArmy} endIcon={<FileDownloadIcon/>} sx={{ borderRadius:'16px', backgroundColor:'buttons.main', '&:hover': { backgroundColor:'buttons.main', boxShadow: 5, } }}>Import</Button>
             </Stack>
 
-            <Stack direction='column' spacing={5}>
+            <Stack direction='column' pt={5} spacing={2} alignItems='center' justifyContent='center'>
+                <Avatar src={townHallsImages[currentTownHall-1]} variant='square' sx={{ width: 120, height: 130 }}/>
                 <Typography>Troops Capacity : {currentTroopsCapacity}/{MAX_TROOPS[currentTownHall]}</Typography>
-                <Stack direction='row' spacing={5}>
-                    <Stack direction='column'>
-                        <Typography>Troops</Typography>
+                {MAX_SPELLS[currentTownHall] === 0 ? <></> : <Typography>Spells Capacity : {currentSpellsCapacity}/{MAX_SPELLS[currentTownHall]}</Typography>}
+                {MAX_BOOSTED[currentTownHall] === 0 ? <></> : <Typography>Boosted Units : {currentBoostedUnits}/{MAX_BOOSTED[currentTownHall]}</Typography>}
+                {MAX_MACHINES[currentTownHall] === 0 ? <></> : <Typography>Siege Machines Capacity : {currentMachinesCapacity}/{MAX_MACHINES[currentTownHall]}</Typography>}
+                <Slider value={currentTownHall} valueLabelDisplay="auto" min={1} max={HIGHEST_TH} onChange={handleSlideTH} sx={{ width:450 }}/>
+            </Stack>
+
+            <Stack direction='column' pt={5} spacing={5} alignItems='center' justifyContent='center'>
+                <Stack direction='row' spacing={5} alignItems='flex-start' justifyContent='space-evenly'>
+                    <Stack direction='column' spacing={1} alignItems='center' justifyContent='center'>
+                        <Typography>TROOPS</Typography>
                         {arrayOnlyProp(pTroops,currentTownHall).map((index) => (    
-                            <Stack direction='row' key={index[0]} spacing={3}>
-                                <Avatar src='../static/images/avatars/barbarian.svg' variant='rounded'/>
-                                <Typography sx={{ minWidth: 150 }}>{index[1]}</Typography>
+                            <Stack direction='row' key={index[0]} spacing={3} alignItems='center' justifyContent='center'>
+                                <Avatar src={troopsImages[index[0]]} variant='square'/>
+                                <Typography sx={{ minWidth: 150, textAlign:'center' }}>{index[1]}</Typography>
                                 <TextField
                                 name={index[0].toString()}
                                 type={'number'}
                                 value={currentTroops[index[0]][1]}
-                                sx={{ maxWidth: 80 }}
+                                sx={{ width: 80 }}
                                 onChange={handleChangeTroop}
                                 />
                             </Stack>
                         ))}
                     </Stack>
-                    <Stack direction='column'>
-                        <Typography>Dark Troops</Typography>
+                    <Stack direction='column' spacing={1} alignItems='center' justifyContent='center'>
+                        {currentTownHall >= 7 ? <Typography>DARK TROOPS</Typography> : <></>}
                         {arrayOnlyProp(dTroops,currentTownHall).map((index) => (    
-                            <Stack direction='row' key={index[0]} spacing={3}>
-                                <Avatar src='../static/images/avatars/barbarian.svg' variant='rounded'/>
+                            <Stack direction='row' key={index[0]} spacing={3} alignItems='center' justifyContent='center'>
+                                <Avatar src={troopsImages[index[0]]} variant='square'/>
                                 <Typography sx={{ minWidth: 150 }}>{index[1]}</Typography>
                                 <TextField
                                 name={index[0].toString()}
@@ -379,13 +425,12 @@ export default function MainPage() {
                     </Stack>
                 </Stack>
                 
-                {MAX_SPELLS[currentTownHall] === 0 ? <Typography>&nbsp;</Typography> : <Typography>Spells Capacity : {currentSpellsCapacity}/{MAX_SPELLS[currentTownHall]}</Typography>}
-                <Stack direction='row' spacing={5}>
-                    <Stack direction='column'>
-                        <Typography>Spells</Typography>
+                <Stack direction='row' spacing={5} alignItems='flex-start' justifyContent='space-evenly'>
+                    <Stack direction='column' spacing={1} alignItems='center' justifyContent='center'>
+                        {currentTownHall >= 5 ? <Typography>SPELLS</Typography> : <></>}
                         {arrayOnlyProp(pSpells,currentTownHall).map((index) => (    
-                            <Stack direction='row' key={index[0]} spacing={3}>
-                                <Avatar src='../static/images/avatars/barbarian.svg' variant='rounded'/>
+                            <Stack direction='row' key={index[0]} spacing={3} alignItems='center' justifyContent='center'>
+                                <Avatar src={spellsImages[index[0]]} variant='square'/>
                                 <Typography sx={{ minWidth: 150 }}>{index[1]}</Typography>
                                 <TextField
                                 name={index[0].toString()}
@@ -397,11 +442,11 @@ export default function MainPage() {
                             </Stack>
                         ))}
                     </Stack>
-                    <Stack direction='column'>
-                        <Typography>Dark Spells</Typography>
+                    <Stack direction='column' spacing={1} alignItems='center' justifyContent='center'>
+                        {currentTownHall >= 8 ? <Typography>DARK SPELLS</Typography> : <></>}
                         {arrayOnlyProp(dSpells,currentTownHall).map((index) => (    
-                            <Stack direction='row' key={index[0]} spacing={3}>
-                                <Avatar src='../static/images/avatars/barbarian.svg' variant='rounded'/>
+                            <Stack direction='row' key={index[0]} spacing={3} alignItems='center' justifyContent='center'>
+                                <Avatar src={spellsImages[index[0]]} variant='square'/>
                                 <Typography sx={{ minWidth: 150 }}>{index[1]}</Typography>
                                 <TextField
                                 name={index[0].toString()}
@@ -415,14 +460,12 @@ export default function MainPage() {
                     </Stack>
                 </Stack>
                 
-                {MAX_BOOSTED[currentTownHall] === 0 ? <Typography>&nbsp;</Typography> : <Typography>Boosted Units : {currentBoostedUnits}/{MAX_BOOSTED[currentTownHall]}</Typography>}
-                {MAX_MACHINES[currentTownHall] === 0 ? <Typography>&nbsp;</Typography> : <Typography>Siege Machines Capacity : {currentMachinesCapacity}/{MAX_MACHINES[currentTownHall]}</Typography>}
-                <Stack direction='row' spacing={5}>
-                    <Stack direction='column'>
-                        <Typography>Super Troops</Typography>
+                <Stack direction='row' spacing={5} alignItems='flex-start' justifyContent='space-evenly'>
+                    <Stack direction='column' spacing={1} alignItems='center' justifyContent='center'>
+                        {currentTownHall >= 11 ? <Typography>SUPER TROOPS</Typography> : <></>}
                         {arrayOnlyProp(sTroops,currentTownHall).map((index) => (    
-                            <Stack direction='row' key={index[0]} spacing={3}>
-                                <Avatar src='../static/images/avatars/barbarian.svg' variant='rounded'/>
+                            <Stack direction='row' key={index[0]} spacing={3} alignItems='center' justifyContent='center'>
+                                <Avatar src={troopsImages[index[0]]} variant='square'/>
                                 <Typography sx={{ minWidth: 150 }}>{index[1]}</Typography>
                                 <TextField
                                 name={index[0].toString()}
@@ -434,11 +477,11 @@ export default function MainPage() {
                             </Stack>
                         ))}
                     </Stack>
-                    <Stack direction='column'>
-                        <Typography>Siege Machines</Typography>
+                    <Stack direction='column' spacing={1} alignItems='center' justifyContent='center'>
+                        {currentTownHall >= 12 ? <Typography>SIEGE MACHINES</Typography> : <></>}
                         {arrayOnlyProp(sMachines,currentTownHall).map((index) => (    
-                            <Stack direction='row' key={index[0]} spacing={3}>
-                                <Avatar src='../static/images/avatars/barbarian.svg' variant='rounded'/>
+                            <Stack direction='row' key={index[0]} spacing={3} alignItems='center' justifyContent='center'>
+                                <Avatar src={machinesImages[index[0]]} variant='square'/>
                                 <Typography sx={{ minWidth: 150 }}>{index[1]}</Typography>
                                 <TextField
                                 name={index[0].toString()}
@@ -453,9 +496,17 @@ export default function MainPage() {
                 </Stack>
             </Stack>
 
-            <Stack direction='column'>
-                <Typography>&nbsp;{exportLink}&nbsp;</Typography>
-                <Button onClick={exportArmy} endIcon={<FileUploadIcon/>}>Export</Button>
+            <Stack direction='column' pt={7} pb={5} spacing={2} alignItems='center' justifyContent='center'>
+                <Stack pl={21} direction='row' spacing={1} alignItems='center' justifyContent='flex-end'>
+                    <TextField value={exportLink} disabled sx={{ width:300 }}/>
+                    <IconButton onClick={copyClipboard}>
+                        <ContentCopyIcon/>
+                    </IconButton>
+                    <Fade in={visible === true} timeout={400}>
+                        <Typography variant='caption' color='primary'>Copied to clipboard</Typography>
+                    </Fade>
+                </Stack>
+                <Button variant='contained' size='large' onClick={exportArmy} endIcon={<FileUploadIcon/>} sx={{ borderRadius:'16px', backgroundColor:'buttons.main', '&:hover': { backgroundColor:'buttons.main', boxShadow: 5, } }}>Export</Button>
             </Stack>
         </>
     )

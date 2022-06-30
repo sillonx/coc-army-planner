@@ -1,4 +1,4 @@
-//['index', 'name', 'housingSpace', 'townhallRequired', 'idURL']
+//[index, 'name', housingSpace, townhallRequired, 'idURL']
 export const TROOPS = [ 
     //Troops
     [0,'Barbarian', 1, 1, '0'],
@@ -37,7 +37,7 @@ export const TROOPS = [
     [29,'Rocket Balloon',8,12,'57'],
     [30,'Super Wizard',10,12,'83'],
     [31,'Super Dragon',40,12,'81'],
-    [32,'Inferno Dragon',15,12,''],
+    [32,'Inferno Dragon',15,12,'63'],
     [33,'Super Minion',12,12,'84'],
     [34,'Super Valkyrie',20,12,'64'],
     [35,'Super Witch',40,12,'66'],
@@ -50,10 +50,10 @@ export const TROOPS = [
     [40,'Stone Slammer', 1, 12, '62'],
     [41,'Siege Barracks', 1, 13, '75'],
     [42,'Log Launcher', 1, 13, '87'],
-    [43,'Flame Flinger', 1, 14, '']
+    [43,'Flame Flinger', 1, 14, '91']
 ];
 
-//['index', 'name', 'housingSpace', 'townhallRequired', 'idURL']
+//[index, 'name', housingSpace, townhallRequired, 'idURL']
 export const SPELLS = [
     //Spells
     [0,'Lightning', 1, 5, '0'],
