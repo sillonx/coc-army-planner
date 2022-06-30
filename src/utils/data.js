@@ -28,29 +28,29 @@ export const TROOPS = [
     [22,'Ice Golem', 15, 11, '58'],
     [23,'Headhunter', 6, 12, '82'],
   
-    //Siege Machines
-    [24,'Wall Wrecker',1,12,'51'],
-    [25,'BattleBlimp',1,12,'52'],
-    [26,'Stone Slammer',1,12,'62'],
-    [27,'Siege Barracks',1,13,'75'],
-    [28,'Log Launcher',1,13,'87'],
-    [29,'Flame Flinger',1,14,''],
-  
     //Super Troops
-    [30,'Super Barbarian',5,11,'26'],
-    [31,'Super Archer',12,11,'27'],
-    [32,'Super Giant',10,12,'29'],
-    [33,'Sneaky Goblin',3,11,'55'],
-    [34,'Super Wall Breaker',8,11,'28'],
-    [35,'Rocket Balloon',8,12,'57'],
-    [36,'Super Wizard',10,12,'83'],
-    [37,'Super Dragon',40,12,'81'],
-    [38,'Inferno Dragon',15,12,''],
-    [39,'Super Minion',12,12,'84'],
-    [40,'Super Valkyrie',20,12,'64'],
-    [41,'Super Witch',40,12,'66'],
-    [42,'Ice Hound',40,12,'76'],
-    [43,'Super Bowler',30,12,'80'],
+    [24,'Super Barbarian',5,11,'26'],
+    [25,'Super Archer',12,11,'27'],
+    [26,'Super Giant',10,12,'29'],
+    [27,'Sneaky Goblin',3,11,'55'],
+    [28,'Super Wall Breaker',8,11,'28'],
+    [29,'Rocket Balloon',8,12,'57'],
+    [30,'Super Wizard',10,12,'83'],
+    [31,'Super Dragon',40,12,'81'],
+    [32,'Inferno Dragon',15,12,''],
+    [33,'Super Minion',12,12,'84'],
+    [34,'Super Valkyrie',20,12,'64'],
+    [35,'Super Witch',40,12,'66'],
+    [36,'Ice Hound',40,12,'76'],
+    [37,'Super Bowler',30,12,'80'],
+
+    //Siege Machines
+    [38,'Wall Wrecker', 1, 12, '51'],
+    [39,'BattleBlimp', 1, 12, '52'],
+    [40,'Stone Slammer', 1, 12, '62'],
+    [41,'Siege Barracks', 1, 13, '75'],
+    [42,'Log Launcher', 1, 13, '87'],
+    [43,'Flame Flinger', 1, 14, '']
 ];
 
 //['index', 'name', 'housingSpace', 'townhallRequired', 'idURL']

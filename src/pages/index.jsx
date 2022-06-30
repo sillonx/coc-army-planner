@@ -6,41 +6,50 @@ import {
     Slider,
     Avatar,
     Typography,
-    TextField
+    TextField,
+    Button
 } from '@mui/material';
+
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 import {
     TROOPS,
     SPELLS,
     MAX_TROOPS,
     MAX_SPELLS,
-    MAX_MACHINES,
     MAX_BOOSTED,
+    MAX_MACHINES,
     HIGHEST_TH
 } from '../utils/data';
 
 import {
     arrayOnlyProp,
-    divideArray
+    divideArray,
+    decodeLink,
+    encodeLink
 } from '../utils/functions';
 
 
 export default function MainPage() {
 
-    let tempTab = divideArray();
+    const [importLink, setImportLink] = useState('');
+    const [exportLink, setExportLink] = useState('');
+
+    let tempTab = divideArray(TROOPS, SPELLS);
     const pTroops = tempTab[0];
     const dTroops = tempTab[1];
     const pSpells = tempTab[2];
     const dSpells = tempTab[3];
-    const sMachines = tempTab[4];
-    const sTroops = tempTab[5];
+    const sTroops = tempTab[4];
+    const sMachines = tempTab[5];
 
     //Array saving the current amount
     const [currentTownHall, setCurrentTownHall] = useState(HIGHEST_TH);
     const [currentTroopsCapacity, setCurrentTroopsCapacity] = useState(0);
     const [currentSpellsCapacity, setCurrentSpellsCapacity] = useState(0);
-    const [currentMachinesCapacity, setCurrentMachinesCapacity] = useState(0);
     const [currentBoostedUnits, setCurrentBoostedUnits] = useState(0);
+    const [currentMachinesCapacity, setCurrentMachinesCapacity] = useState(0);
 
     //Arrays used to initialize
     var initTroops = []
@@ -157,43 +166,6 @@ export default function MainPage() {
         setCurrentSpells(mySpells);
     }
 
-    const handleChangeMachine = (e) => {
-        //Force integer
-        e.target.value = Math.floor(e.target.value);
-
-        //Set variables used after
-        let name = parseInt(e.target.name);
-        let value = parseInt(e.target.value);
-        let tTab = []
-        for (let i=0; i<TROOPS.length; i++) {
-            tTab.push(previousTroopsCapacity[i]);
-        }
-        var myTroops = []
-        for (let i=0; i<TROOPS.length; i++) {
-            myTroops.push(currentTroops[i]);
-        }
-
-        //Force unsigned
-        if (value < 0) {
-            e.target.value = 0;
-            value = 0;
-        }
-        //Force max value
-        if (value*TROOPS[name][2] > MAX_MACHINES[currentTownHall] - currentMachinesCapacity + previousTroopsCapacity[name]*TROOPS[name][2]) {
-            e.target.value = Math.floor((MAX_MACHINES[currentTownHall] - currentMachinesCapacity + previousTroopsCapacity[name]*TROOPS[name][2]) / TROOPS[name][2]);
-            value = e.target.value;
-        }
-
-        //Replace value
-        let newValue = currentMachinesCapacity + (value - previousTroopsCapacity[name])*TROOPS[name][2];
-        setCurrentMachinesCapacity(newValue);
-        tTab[name] = value;
-        setPreviousTroopsCapacity(tTab);
-
-        myTroops[name][1] = value;
-        setCurrentTroops(myTroops);
-    } 
-
     const handleChangeSTroop = (e) => {
         //Force integer
         e.target.value = Math.floor(e.target.value);
@@ -252,13 +224,116 @@ export default function MainPage() {
         myTroops[name][1] = value;
         setCurrentTroops(myTroops);
 
-    }    
+    } 
+
+    const handleChangeMachine = (e) => {
+        //Force integer
+        e.target.value = Math.floor(e.target.value);
+
+        //Set variables used after
+        let name = parseInt(e.target.name);
+        let value = parseInt(e.target.value);
+        let tTab = []
+        for (let i=0; i<TROOPS.length; i++) {
+            tTab.push(previousTroopsCapacity[i]);
+        }
+        var myTroops = []
+        for (let i=0; i<TROOPS.length; i++) {
+            myTroops.push(currentTroops[i]);
+        }
+
+        //Force unsigned
+        if (value < 0) {
+            e.target.value = 0;
+            value = 0;
+        }
+        //Force max value
+        if (value*TROOPS[name][2] > MAX_MACHINES[currentTownHall] - currentMachinesCapacity + previousTroopsCapacity[name]*TROOPS[name][2]) {
+            e.target.value = Math.floor((MAX_MACHINES[currentTownHall] - currentMachinesCapacity + previousTroopsCapacity[name]*TROOPS[name][2]) / TROOPS[name][2]);
+            value = e.target.value;
+        }
+
+        //Replace value
+        let newValue = currentMachinesCapacity + (value - previousTroopsCapacity[name])*TROOPS[name][2];
+        setCurrentMachinesCapacity(newValue);
+        tTab[name] = value;
+        setPreviousTroopsCapacity(tTab);
+
+        myTroops[name][1] = value;
+        setCurrentTroops(myTroops);
+    } 
+
+    const importArmy = (e) => {
+        var armyTab = decodeLink(importLink);
+        let importedTroops = armyTab[0];
+        let importedSpells = armyTab[1];
+        setCurrentTownHall(HIGHEST_TH);
+        setCurrentTroops(importedTroops);
+        setCurrentSpells(importedSpells);
+        refreshCapacities(importedTroops,importedSpells);
+    }
+
+    function refreshCapacities(iTroops, iSpells) {
+
+        var prevTroops = []
+        for (let i=0; i<iTroops.length; i++) {
+            prevTroops.push(iTroops[i][1]);
+        }
+        var prevSpells = []
+        for (let i=0; i<iSpells.length; i++) {
+            prevSpells.push(iSpells[i][1]);
+        }
+        
+        setPreviousTroopsCapacity(prevTroops);
+        setPreviousSpellsCapacity(prevSpells);
+
+        let tempTab = divideArray(iTroops, iSpells);
+        iTroops = tempTab[0].concat(tempTab[1].concat(tempTab[4]));
+        iSpells = tempTab[2].concat(tempTab[3]);
+        var iSMachines = tempTab[5];
+        var iSTroops = tempTab[4];
+
+        var newTC = 0;
+        var newSC = 0;
+        var newBC = 0;
+        var newMC = 0;
+
+        for (let i=0; i<iTroops.length; i++) {
+            newTC+=iTroops[i][1]*TROOPS[i][2];
+        }
+        setCurrentTroopsCapacity(newTC);
+
+        for (let i=0; i<iSpells.length; i++) {
+            newSC+=iSpells[i][1]*SPELLS[i][2];
+        }
+        setCurrentSpellsCapacity(newSC);
+
+        for (let i=0; i<iSMachines.length; i++) {
+            newMC+=iSMachines[i][1];
+        }
+        setCurrentMachinesCapacity(newMC);
+
+        for (let i=0; i<iSTroops.length; i++) {
+            if (iSTroops[i][1] > 0) {
+                newBC++;
+            }
+        }
+        setCurrentBoostedUnits(newBC);
+    }
+
+    const exportArmy = (e) => {
+        setExportLink(encodeLink([currentTroops, currentSpells]));
+    }
 
     return (
         <>
+            <Stack direction='column'>
+                <TextField value={importLink} placeholder='https://link.clashofclans.com/en?action=CopyArmy&army=' onChange={(e) => {setImportLink(e.target.value)}}></TextField>
+                <Button onClick={importArmy} endIcon={<FileDownloadIcon/>}>Import</Button>
+            </Stack>
             <Stack direction='row' spacing={5} sx={{ maxWidth: 500 }} pt={5} pl={5}>
                 <Slider
-                    defaultValue={HIGHEST_TH}
+                    value={currentTownHall}
                     valueLabelDisplay="auto"
                     min={1}
                     max={HIGHEST_TH}
@@ -267,11 +342,8 @@ export default function MainPage() {
                 <Typography>TH {currentTownHall}</Typography>
             </Stack>
 
-            <Typography>Troops Capacity : {currentTroopsCapacity}/{MAX_TROOPS[currentTownHall]}</Typography>
-            {MAX_SPELLS[currentTownHall] === 0 ? <Typography>&nbsp;</Typography> : <Typography>Spells Capacity : {currentSpellsCapacity}/{MAX_SPELLS[currentTownHall]}</Typography>}
-            {MAX_MACHINES[currentTownHall] === 0 ? <Typography>&nbsp;</Typography> : <Typography>Siege Machines Capacity : {currentMachinesCapacity}/{MAX_MACHINES[currentTownHall]}</Typography>}
-            {MAX_BOOSTED[currentTownHall] === 0 ? <Typography>&nbsp;</Typography> : <Typography>Boosted Units : {currentBoostedUnits}/{MAX_BOOSTED[currentTownHall]}</Typography>}
             <Stack direction='column' spacing={5}>
+                <Typography>Troops Capacity : {currentTroopsCapacity}/{MAX_TROOPS[currentTownHall]}</Typography>
                 <Stack direction='row' spacing={5}>
                     <Stack direction='column'>
                         <Typography>Troops</Typography>
@@ -306,7 +378,8 @@ export default function MainPage() {
                         ))}
                     </Stack>
                 </Stack>
-
+                
+                {MAX_SPELLS[currentTownHall] === 0 ? <Typography>&nbsp;</Typography> : <Typography>Spells Capacity : {currentSpellsCapacity}/{MAX_SPELLS[currentTownHall]}</Typography>}
                 <Stack direction='row' spacing={5}>
                     <Stack direction='column'>
                         <Typography>Spells</Typography>
@@ -341,24 +414,10 @@ export default function MainPage() {
                         ))}
                     </Stack>
                 </Stack>
-
+                
+                {MAX_BOOSTED[currentTownHall] === 0 ? <Typography>&nbsp;</Typography> : <Typography>Boosted Units : {currentBoostedUnits}/{MAX_BOOSTED[currentTownHall]}</Typography>}
+                {MAX_MACHINES[currentTownHall] === 0 ? <Typography>&nbsp;</Typography> : <Typography>Siege Machines Capacity : {currentMachinesCapacity}/{MAX_MACHINES[currentTownHall]}</Typography>}
                 <Stack direction='row' spacing={5}>
-                    <Stack direction='column'>
-                        <Typography>Siege Machines</Typography>
-                        {arrayOnlyProp(sMachines,currentTownHall).map((index) => (    
-                            <Stack direction='row' key={index[0]} spacing={3}>
-                                <Avatar src='../static/images/avatars/barbarian.svg' variant='rounded'/>
-                                <Typography sx={{ minWidth: 150 }}>{index[1]}</Typography>
-                                <TextField
-                                name={index[0].toString()}
-                                type={'number'}
-                                value={currentTroops[index[0]][1]}
-                                sx={{ maxWidth: 80 }}
-                                onChange={handleChangeMachine}
-                                />
-                            </Stack>
-                        ))}
-                    </Stack>
                     <Stack direction='column'>
                         <Typography>Super Troops</Typography>
                         {arrayOnlyProp(sTroops,currentTownHall).map((index) => (    
@@ -375,7 +434,28 @@ export default function MainPage() {
                             </Stack>
                         ))}
                     </Stack>
+                    <Stack direction='column'>
+                        <Typography>Siege Machines</Typography>
+                        {arrayOnlyProp(sMachines,currentTownHall).map((index) => (    
+                            <Stack direction='row' key={index[0]} spacing={3}>
+                                <Avatar src='../static/images/avatars/barbarian.svg' variant='rounded'/>
+                                <Typography sx={{ minWidth: 150 }}>{index[1]}</Typography>
+                                <TextField
+                                name={index[0].toString()}
+                                type={'number'}
+                                value={currentTroops[index[0]][1]}
+                                sx={{ maxWidth: 80 }}
+                                onChange={handleChangeMachine}
+                                />
+                            </Stack>
+                        ))}
+                    </Stack>
                 </Stack>
+            </Stack>
+
+            <Stack direction='column'>
+                <Typography>&nbsp;{exportLink}&nbsp;</Typography>
+                <Button onClick={exportArmy} endIcon={<FileUploadIcon/>}>Export</Button>
             </Stack>
         </>
     )

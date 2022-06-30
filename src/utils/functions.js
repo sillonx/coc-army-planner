@@ -12,7 +12,9 @@ export function encodeLink(army) {
   if (troops.length !== 0) {
     resStr += 'u';
     for (let i in troops) {
-      resStr = resStr + troops[i][1].toString() + 'x' + TROOPS[troops[i][0]][4] + '-';
+      if (troops[i][1] !== 0) {
+        resStr = resStr + troops[i][1].toString() + 'x' + TROOPS[troops[i][0]][4] + '-';
+      }
     }
     resStr = resStr.slice(0, -1);
   }
@@ -20,7 +22,9 @@ export function encodeLink(army) {
   if (spells.length !== 0) {
     resStr += 's';
     for (let i in spells) {
-      resStr = resStr + spells[i][1].toString() + 'x' + SPELLS[spells[i][0]][4] + '-';
+      if (spells[i][1] !== 0) {
+        resStr = resStr + spells[i][1].toString() + 'x' + SPELLS[spells[i][0]][4] + '-';
+      }
     }
     resStr = resStr.slice(0, -1);
   }
@@ -30,9 +34,16 @@ export function encodeLink(army) {
   
 //decode CoC share link into army
 export function decodeLink(url) {
-  let troopsTab = [];
-  let spellsTab = [];
-  url = url.replace('https://link.clashofclans.com/en?action=CopyArmy&army=','');
+  var troopsTab = [];
+  for (let i=0; i<TROOPS.length; i++) {
+    troopsTab.push([i,0]);
+  }
+  var spellsTab = [];
+  for (let i=0; i<SPELLS.length; i++) {
+    spellsTab.push([i,0]);
+  }
+  url = url.replace(' ','');
+  url = url.substring(54);
 
   if (url.charAt(0) === 'u') {
     url = url.slice(1,);
@@ -57,14 +68,18 @@ export function decodeLink(url) {
 
 //create army tab for encoding
 export function splitAndConvert(myString, myDic) {
-  let resTab = []
+  var resTab = [];
+  for (let i=0; i<myDic.length; i++) {
+    resTab.push([i,0]);
+  }
   let allUnits = myString.split('-');
 
   for (let i in allUnits) {
     allUnits[i] = allUnits[i].split('x');
   }
   for (let j in allUnits) {
-    resTab.push([findKeyOnProp(allUnits[j][1],myDic),parseInt(allUnits[j][0])]);
+    let unitId = findKeyOnProp(allUnits[j][1],myDic);
+    resTab[unitId] = [unitId,parseInt(allUnits[j][0])];
   }
   return resTab;
 }
@@ -91,48 +106,48 @@ export function arrayOnlyProp(myArray, myCond) {
 }
 
 //Split arrays depending on type
-export function divideArray() {
+export function divideArray(troops,spells) {
   let resTab = []
   let tempTab = []
 
   //Pink troops
   for (let i=0; i<15; i++) {
-    tempTab.push(TROOPS[i]);
+    tempTab.push(troops[i]);
   }
   resTab.push(tempTab);
   tempTab = [];
 
   //Dark troops
   for (let i=15; i<24; i++) {
-    tempTab.push(TROOPS[i]);
+    tempTab.push(troops[i]);
   }
   resTab.push(tempTab);
   tempTab = [];
 
   //Pink spells
   for (let i=0; i<7; i++) {
-    tempTab.push(SPELLS[i]);
+    tempTab.push(spells[i]);
   }
   resTab.push(tempTab);
   tempTab = [];
 
   //Dark spells
-  for (let i=7; i<11; i++) {
-    tempTab.push(SPELLS[i]);
-  }
-  resTab.push(tempTab);
-  tempTab = [];
-
-  //Siege Machines
-  for (let i=24; i<30; i++) {
-    tempTab.push(TROOPS[i]);
+  for (let i=7; i<12; i++) {
+    tempTab.push(spells[i]);
   }
   resTab.push(tempTab);
   tempTab = [];
 
   //Super Troops
-  for (let i=30; i<44; i++) {
-    tempTab.push(TROOPS[i]);
+  for (let i=24; i<38; i++) {
+    tempTab.push(troops[i]);
+  }
+  resTab.push(tempTab);
+  tempTab = [];
+
+  //Siege Machines
+  for (let i=38; i<44; i++) {
+    tempTab.push(troops[i]);
   }
   resTab.push(tempTab);
 
