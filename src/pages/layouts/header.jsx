@@ -2,7 +2,6 @@ import React from 'react';
 import { useCookies } from 'react-cookie';
 
 import { 
-  Grid,
   Typography,
   IconButton,
   Box
@@ -24,21 +23,17 @@ export default function Header() {
 
   return (
     <>
-      <Grid container direction='row' justifyContent='center' alignItems='center' sx={{ height:130, position:'static', bottom:0, backgroundColor:'background.paper', boxShadow:5 }}>
-        <Grid item xs={4} sm={4} md={4} lg={4} xl={4} justifyContent='flex-end' alignItems='center'>
-          <Typography variant='h5' sx={{ margin:'0 auto', float:'none' }}>
-            6onx's Army Planner
-          </Typography>
-        </Grid>
-        <Box xs={4} sm={4} md={4} lg={4} xl={4} component='img' sx={{ height: 100, margin:'0 auto', float:'none' }} alt='Clash of Clans Logo' src={coc_logo}/>
-        <Grid item xs={4} sm={4} md={4} lg={4} xl={4} justifyContent='flex-end' alignItems='center'>
-          <IconButton size='large' onClick={handleChange} sx={{ margin:'0 auto', float:'none' }}>
-            {cookies.mode === 'dark' ? 
-            <DarkModeIcon sx={{ color:'common.white', backgroundColor:'background.paper', borderRadius:5, boxShadow:5, width: 33, height: 33 }}/> : 
-            <LightModeIcon sx={{ color:'common.black', backgroundColor:'background.paper', borderRadius:5, boxShadow:5, width: 33, height: 33 }}/> }
-          </IconButton>
-        </Grid>
-      </Grid>
+      <Box p={3} maxWidth sx={{ alignContent:'center', alignItems:'center', justifyContent:'space-between', flexDirection:'row', position:'static', bottom:0, backgroundColor:'background.paper', boxShadow:5, display:'flex' }}>
+        <Typography variant='h5'>
+          6onx's Army Planner
+        </Typography>
+        <Box component='img' sx={{ height: 100 }} alt='Clash of Clans Logo' src={coc_logo}/>
+        <IconButton size='large' onClick={handleChange}>
+          {cookies.mode === 'dark' ? 
+          <DarkModeIcon sx={{ color:'common.white', backgroundColor:'background.paper', borderRadius:5, boxShadow:5, width: 33, height: 33 }}/> : 
+          <LightModeIcon sx={{ color:'common.black', backgroundColor:'background.paper', borderRadius:5, boxShadow:5, width: 33, height: 33 }}/> }
+        </IconButton>
+      </Box>
     </>
   )
 };

@@ -52,7 +52,7 @@ const DarkPalette = createTheme({
         tonalOffset: 0.2,
     },
     typography: {
-        fontFamily: 'Mangal',
+        fontFamily: 'Arial',
         fontSize: 14,
         fontWeightBold: 1000
     }

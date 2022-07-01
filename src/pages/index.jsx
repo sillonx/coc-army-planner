@@ -388,7 +388,7 @@ export default function MainPage() {
     return (
         <>
             <Stack direction='column' pt={5} spacing={2} alignItems='center' justifyContent='center'>
-                <TextField sx={{ width:450 }} value={importLink} placeholder='https://link.clashofclans.com/en?action=CopyArmy&army=' onChange={(e) => setImportLink(e.target.value)} color='textfield' focused={importLink !== ''}></TextField>
+                <TextField sx={{ width:300 }} value={importLink} placeholder='https://link.clashofclans.com/en?action=CopyArmy&army=' onChange={(e) => setImportLink(e.target.value)} color='textfield' focused={importLink !== ''}></TextField>
                 <Button size='large' variant='contained' onClick={importArmy} endIcon={<FileDownloadIcon/>} sx={{ borderRadius:'16px', backgroundColor:'buttons.main', '&:hover': { backgroundColor:'buttons.main', boxShadow: 5 } }}>Import</Button>
             </Stack>
 
@@ -398,14 +398,14 @@ export default function MainPage() {
                 {MAX_SPELLS[currentTownHall] === 0 ? <></> : <Typography variant='h6'>Spells Capacity : {currentSpellsCapacity}/{MAX_SPELLS[currentTownHall]}</Typography>}
                 {MAX_BOOSTED[currentTownHall] === 0 ? <></> : <Typography variant='h6'>Boosted Units : {currentBoostedUnits}/{MAX_BOOSTED[currentTownHall]}</Typography>}
                 {MAX_MACHINES[currentTownHall] === 0 ? <></> : <Typography variant='h6'>Siege Machines Capacity : {currentMachinesCapacity}/{MAX_MACHINES[currentTownHall]}</Typography>}
-                <Slider value={currentTownHall} marks valueLabelDisplay='on' min={1} max={HIGHEST_TH} onChange={handleSlideTH} sx={{ paddingTop:10, width:450, color:'buttons.main' }}/>
+                <Slider value={currentTownHall} marks valueLabelDisplay='on' min={1} max={HIGHEST_TH} onChange={handleSlideTH} sx={{ paddingTop:10, width:350, color:'buttons.main' }}/>
                 <Button size='large' variant='contained' onClick={clearAll} endIcon={<ClearIcon/>} sx={{ borderRadius:'16px', color:'common.black', backgroundColor:'buttons.secondary', '&:hover': { backgroundColor:'buttons.secondary', boxShadow: 5, color:'common.black' } }}>Clear All</Button>
             </Stack>
 
-            <Stack direction='column' pt={5} spacing={5} alignItems='center' justifyContent='center'>
-                <Grid container direction='row' spacing={2} alignItems='flex-start' justifyContent='space-evenly'>
+            <Stack direction='column' pt={5} spacing={4} alignItems='center' justifyContent='center'>
+                <Grid container pt={2} direction='row' spacing={2} alignItems='flex-start' justifyContent='space-evenly'>
                     <Stack xs={12} sm={12} md={6} lg={6} xl={6} direction='column' spacing={1} alignItems='center' justifyContent='center'>
-                        <Stack direction='row' spacing={2} alignItems='center' justifyContent='center'>
+                        <Stack direction='row' spacing={2} pb={2} alignItems='center' justifyContent='center'>
                             <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[0])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>TROOPS</Typography>
                             <Avatar src={barracksImages[MAX_BARRACKS[currentTownHall]-1]} variant='square' alt={'Barracks'} sx={{ width: 50, height: 50 }}/>
                         </Stack>
@@ -420,14 +420,14 @@ export default function MainPage() {
                                 sx={{ width: 80 }}
                                 onChange={handleChangeTroop}
                                 color='textfield'
-                                focused={currentTroops[index[0]][1] !== 0}
+                                focused={currentTroops[index[0]][1] !== 0 && currentTroops[index[0]][1] !== '0'}
                                 />
                             </Stack>
                         ))}
                     </Stack>
                     <Stack xs={12} sm={12} md={6} lg={6} xl={6} direction='column' spacing={1} alignItems='center' justifyContent='center'>
                         {currentTownHall >= 7 ? 
-                        <Stack direction='row' spacing={2} alignItems='center' justifyContent='center'>
+                        <Stack direction='row' spacing={2} pb={2} alignItems='center' justifyContent='center'>
                             <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[1])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>DARK TROOPS</Typography> 
                             <Avatar src={darkBarracksImages[MAX_DARK_BARRACKS[currentTownHall]-1]} variant='square' alt={'Dark Barracks'} sx={{ width: 50, height: 50 }}/>
                         </Stack>
@@ -443,17 +443,17 @@ export default function MainPage() {
                                 sx={{ maxWidth: 80 }}
                                 onChange={handleChangeTroop}
                                 color='textfield'
-                                focused={currentTroops[index[0]][1] !== 0}
+                                focused={currentTroops[index[0]][1] !== 0 && currentTroops[index[0]][1] !== '0'}
                                 />
                             </Stack>
                         ))}
                     </Stack>
                 </Grid>
                 
-                <Grid container direction='row' spacing={2} alignItems='flex-start' justifyContent='space-evenly'>
+                <Grid container pt={2} direction='row' spacing={2} alignItems='flex-start' justifyContent='space-evenly'>
                     <Stack xs={12} sm={12} md={6} lg={6} xl={6} direction='column' spacing={1} alignItems='center' justifyContent='center'>
                         {currentTownHall >= 5 ?
-                        <Stack direction='row' spacing={2} alignItems='center' justifyContent='center'>
+                        <Stack direction='row' spacing={2} pb={2} alignItems='center' justifyContent='center'>
                             <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[2])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>SPELLS</Typography> 
                             <Avatar src={spellFactoryImages[MAX_SPELL_FACTORY[currentTownHall]-1]} variant='square' alt={'Spell Factory'} sx={{ width: 50, height: 50 }}/>
                         </Stack>
@@ -469,14 +469,14 @@ export default function MainPage() {
                                 sx={{ maxWidth: 80 }}
                                 onChange={handleChangeSpell}
                                 color='textfield'
-                                focused={currentSpells[index[0]][1] !== 0}
+                                focused={currentSpells[index[0]][1] !== 0 && currentSpells[index[0]][1] !== '0'}
                                 />
                             </Stack>
                         ))}
                     </Stack>
                     <Stack xs={12} sm={12} md={6} lg={6} xl={6} direction='column' spacing={1} alignItems='center' justifyContent='center'>
                         {currentTownHall >= 8 ?
-                        <Stack direction='row' spacing={2} alignItems='center' justifyContent='center'> 
+                        <Stack direction='row' spacing={2} pb={2} alignItems='center' justifyContent='center'> 
                             <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[3])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>DARK SPELLS</Typography> 
                             <Avatar src={darkSpellFactoryImages[MAX_DARK_SPELL_FACTORY[currentTownHall]-1]} variant='square' alt={'Dark Spell Factory'} sx={{ width: 50, height: 50 }}/>
                         </Stack>
@@ -492,17 +492,17 @@ export default function MainPage() {
                                 sx={{ maxWidth: 80 }}
                                 onChange={handleChangeSpell}
                                 color='textfield'
-                                focused={currentSpells[index[0]][1] !== 0}
+                                focused={currentSpells[index[0]][1] !== 0 && currentSpells[index[0]][1] !== '0'}
                                 />
                             </Stack>
                         ))}
                     </Stack>
                 </Grid>
                 
-                <Grid container direction='row' spacing={2} alignItems='flex-start' justifyContent='space-evenly'>
+                <Grid container pt={2} direction='row' spacing={2} alignItems='flex-start' justifyContent='space-evenly'>
                     <Stack xs={12} sm={12} md={6} lg={6} xl={6} direction='column' spacing={1} alignItems='center' justifyContent='center'>
                         {currentTownHall >= 11 ? 
-                        <Stack direction='row' spacing={2} alignItems='center' justifyContent='center'>
+                        <Stack direction='row' spacing={2} pb={2} alignItems='center' justifyContent='center'>
                             <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[4])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>SUPER TROOPS</Typography>
                             <Avatar src={super_troops} variant='square' alt={'Super Troops'} sx={{ width: 33, height: 33 }}/>
                         </Stack>
@@ -518,14 +518,14 @@ export default function MainPage() {
                                 sx={{ maxWidth: 80 }}
                                 onChange={handleChangeSTroop}
                                 color='textfield'
-                                focused={currentTroops[index[0]][1] !== 0}
+                                focused={currentTroops[index[0]][1] !== 0 && currentTroops[index[0]][1] !== '0'}
                                 />
                             </Stack>
                         ))}
                     </Stack>
                     <Stack xs={12} sm={12} md={6} lg={6} xl={6} direction='column' spacing={1} alignItems='center' justifyContent='center'>
                         {currentTownHall >= 12 ? 
-                        <Stack direction='row' spacing={2} alignItems='center' justifyContent='center'>
+                        <Stack direction='row' spacing={2} pb={2} alignItems='center' justifyContent='center'>
                             <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[5])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>SIEGE MACHINES</Typography>
                             <Avatar src={workshopImages[MAX_WORKSHOP[currentTownHall]-1]} variant='square' alt={'Workshop'} sx={{ width: 50, height: 50 }}/>
                         </Stack>
@@ -541,7 +541,7 @@ export default function MainPage() {
                                 sx={{ maxWidth: 80 }}
                                 onChange={handleChangeMachine}
                                 color='textfield'
-                                focused={currentTroops[index[0]][1] !== 0}
+                                focused={currentTroops[index[0]][1] !== 0 && currentTroops[index[0]][1] !== '0'}
                                 />
                             </Stack>
                         ))}
@@ -551,7 +551,7 @@ export default function MainPage() {
 
             <Stack direction='column' pt={7} pb={5} spacing={2} alignItems='center' justifyContent='center'>
                 <Stack pl={21} direction='row' spacing={1} alignItems='center' justifyContent='flex-end'>
-                    <TextField value={exportLink} disabled={exportLink === ''} sx={{ width:375 }} color='textfield' focused={exportLink !== ''}/>
+                    <TextField value={exportLink} disabled={exportLink === ''} sx={{ width:300 }} color='textfield' focused={exportLink !== ''}/>
                     <IconButton onClick={copyClipboard}>
                         <ContentCopyIcon/>
                     </IconButton>
