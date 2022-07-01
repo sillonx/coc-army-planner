@@ -7,17 +7,16 @@ const LightPalette = createTheme({
             black : '#000000',
             white : '#FFFFFF'
         },
-        navbar: {
-            background: '#F1F1F1',
-            text: '#000000',
-            textHover: '#FAD248',
-            buttons: '#FAD248'
-        },
         buttons: {
-            main: '#FAD248'
+            main: '#DD0000',
+            secondary: '#FAD248'
+        },
+        textfield: {
+            main: '#FAD248',
+            secondary: '#DD0000'
         },
         primary: {
-            main: '#DD0000'
+            main: '#7F7F7F'
         },
         secondary: {
             main: '#FFFFFF'
@@ -42,8 +41,8 @@ const LightPalette = createTheme({
             secondary: 'rgba(0,0,0,0.6)'
         },
         background: {
-            default: '#EEEEEE',
-            paper: '#FDFDFD'
+            default: '#DEDEDE',
+            paper: '#FAFAFA'
         },
         action: {
 
@@ -51,6 +50,10 @@ const LightPalette = createTheme({
         contrastThreshold: 3,
         tonalOffset: 0.2,
     },
+    typography: {
+        fontFamily: 'Mangal',
+        fontSize: 14
+    }
 })
 
 export default LightPalette;

@@ -7,17 +7,16 @@ const DarkPalette = createTheme({
             black : '#000000',
             white : '#FFFFFF'
         },
-        navbar: {
-            background: '#272727',
-            text: '#FFFFFF',
-            textHover: '#FAD248',
-            buttons: '#FAD248'
-        },
         buttons: {
-            main: '#FAD248'
+            main: '#DD0000',
+            secondary: '#FAD248'
+        },
+        textfield: {
+            main: '#FAD248',
+            secondary: '#DD0000'
         },
         primary: {
-            main: '#DD0000'
+            main: '#7F7F7F'
         },
         secondary: {
             main: '#000000'
@@ -52,6 +51,11 @@ const DarkPalette = createTheme({
         contrastThreshold: 3,
         tonalOffset: 0.2,
     },
+    typography: {
+        fontFamily: 'Mangal',
+        fontSize: 14,
+        fontWeightBold: 1000
+    }
 })
 
 export default DarkPalette;

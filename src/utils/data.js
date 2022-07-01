@@ -144,5 +144,95 @@ export const MAX_BOOSTED = {
     '14' : 2
 };
 
+//TH_level : max_barracks
+export const MAX_BARRACKS = {
+    '1' : 3,
+    '2' : 4,
+    '3' : 5,
+    '4' : 6,
+    '5' : 7,
+    '6' : 8,
+    '7' : 9,
+    '8' : 10,
+    '9' : 11,
+    '10' : 12,
+    '11' : 13,
+    '12' : 14,
+    '13' : 15,
+    '14' : 15
+};
+
+//TH_level : max_dark_barracks
+export const MAX_DARK_BARRACKS = {
+    '1' : 0,
+    '2' : 0,
+    '3' : 0,
+    '4' : 0,
+    '5' : 0,
+    '6' : 0,
+    '7' : 2,
+    '8' : 4,
+    '9' : 6,
+    '10' : 7,
+    '11' : 8,
+    '12' : 9,
+    '13' : 9,
+    '14' : 9
+};
+
+//TH_level : max_spell_factory
+export const MAX_SPELL_FACTORY = {
+    '1' : 0,
+    '2' : 0,
+    '3' : 0,
+    '4' : 0,
+    '5' : 1,
+    '6' : 2,
+    '7' : 3,
+    '8' : 3,
+    '9' : 4,
+    '10' : 5,
+    '11' : 6,
+    '12' : 6,
+    '13' : 6,
+    '14' : 6
+};
+
+//TH_level : max_dark_spell_factory
+export const MAX_DARK_SPELL_FACTORY = {
+    '1' : 0,
+    '2' : 0,
+    '3' : 0,
+    '4' : 0,
+    '5' : 0,
+    '6' : 0,
+    '7' : 0,
+    '8' : 2,
+    '9' : 4,
+    '10' : 5,
+    '11' : 5,
+    '12' : 5,
+    '13' : 5,
+    '14' : 5
+};
+
+//TH_level : max_dark_spell_factory
+export const MAX_WORKSHOP = {
+    '1' : 0,
+    '2' : 0,
+    '3' : 0,
+    '4' : 0,
+    '5' : 0,
+    '6' : 0,
+    '7' : 0,
+    '8' : 0,
+    '9' : 0,
+    '10' : 0,
+    '11' : 0,
+    '12' : 3,
+    '13' : 5,
+    '14' : 6
+};
+
 //current highest TH
 export const HIGHEST_TH = 14;
