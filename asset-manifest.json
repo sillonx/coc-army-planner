@@ -1,6 +1,7 @@
 {
   "files": {
-    "main.js": "/coc-army-planner/static/js/main.0fdd563c.js",
+    "main.js": "/coc-army-planner/static/js/main.e55c8b54.js",
+    "static/js/787.4e3df400.chunk.js": "/coc-army-planner/static/js/787.4e3df400.chunk.js",
     "static/media/lightning.png": "/coc-army-planner/static/media/lightning.868a574bbab1a51f1962.png",
     "static/media/inferno_dragon.png": "/coc-army-planner/static/media/inferno_dragon.2f8655ff9a060fcb9e69.png",
     "static/media/th14.png": "/coc-army-planner/static/media/th14.b7970e926093156f6e7b.png",
@@ -115,9 +116,10 @@
     "static/media/super_dragon.png": "/coc-army-planner/static/media/super_dragon.0b74fa02d8b40489feea.png",
     "static/media/coc_logo.png": "/coc-army-planner/static/media/coc_logo.b1298a2825f5d58bc156.png",
     "index.html": "/coc-army-planner/index.html",
-    "main.0fdd563c.js.map": "/coc-army-planner/static/js/main.0fdd563c.js.map"
+    "main.e55c8b54.js.map": "/coc-army-planner/static/js/main.e55c8b54.js.map",
+    "787.4e3df400.chunk.js.map": "/coc-army-planner/static/js/787.4e3df400.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.0fdd563c.js"
+    "static/js/main.e55c8b54.js"
   ]
 }
