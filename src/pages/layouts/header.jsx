@@ -4,7 +4,8 @@ import { useCookies } from 'react-cookie';
 import { 
   Typography,
   IconButton,
-  Box
+  Box,
+  Grid
 } from '@mui/material';
 
 import LightModeIcon from '@mui/icons-material/LightMode';
@@ -23,17 +24,25 @@ export default function Header() {
 
   return (
     <>
-      <Box p={3} maxWidth sx={{ alignContent:'center', alignItems:'center', justifyContent:'space-between', flexDirection:'row', position:'static', bottom:0, backgroundColor:'background.paper', boxShadow:5, display:'flex' }}>
-        <Typography variant='h5'>
-          6onx's Army Planner
-        </Typography>
-        <Box component='img' sx={{ height: 100 }} alt='Clash of Clans Logo' src={coc_logo}/>
-        <IconButton size='large' onClick={handleChange}>
-          {cookies.mode === 'dark' ? 
-          <DarkModeIcon sx={{ color:'common.white', backgroundColor:'background.paper', borderRadius:5, boxShadow:5, width: 33, height: 33 }}/> : 
-          <LightModeIcon sx={{ color:'common.black', backgroundColor:'background.paper', borderRadius:5, boxShadow:5, width: 33, height: 33 }}/> }
-        </IconButton>
-      </Box>
+      <Grid container direction='row' justifyContent='space-between' alignItems='center' p={3} sx={{ position:'static', bottom:0, backgroundColor:'background.paper', boxShadow:5, display:'flex' }}>
+        <Grid item xs={4} sm={4} md={4} lg={4} xl={4} justifyContent='center' alignItems='center' sx={{ display:'flex' }}>
+          <Typography variant='h5'>
+            CoC Army Planner
+          </Typography>
+        </Grid>
+
+        <Grid item xs={4} sm={4} md={4} lg={4} xl={4} justifyContent='center' alignItems='center' sx={{ display:'flex' }}>
+          <Box component='img' sx={{ height: 100 }} alt='Clash of Clans Logo' src={coc_logo}/>
+        </Grid>
+
+        <Grid item xs={4} sm={4} md={4} lg={4} xl={4} justifyContent='center' alignItems='center' sx={{ display:'flex' }}>
+          <IconButton size='large' onClick={handleChange}>
+            {cookies.mode === 'dark' ? 
+            <DarkModeIcon sx={{ color:'common.white', backgroundColor:'background.default', borderRadius:5, boxShadow:5, width: 33, height: 33 }}/> : 
+            <LightModeIcon sx={{ color:'common.black', backgroundColor:'background.paper', borderRadius:5, boxShadow:5, width: 33, height: 33 }}/> }
+          </IconButton>
+        </Grid>
+      </Grid>
     </>
   )
 };

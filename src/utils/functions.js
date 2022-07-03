@@ -12,7 +12,7 @@ export function encodeLink(army) {
   if (troops.length !== 0) {
     resStr += 'u';
     for (let i in troops) {
-      if (troops[i][1] !== 0) {
+      if (troops[i][1] !== 0 && troops[i][1] !== '0') {
         resStr = resStr + troops[i][1].toString() + 'x' + TROOPS[troops[i][0]][4] + '-';
       }
     }
@@ -22,7 +22,7 @@ export function encodeLink(army) {
   if (spells.length !== 0) {
     resStr += 's';
     for (let i in spells) {
-      if (spells[i][1] !== 0) {
+      if (spells[i][1] !== 0 && spells[i][1] !== '0') {
         resStr = resStr + spells[i][1].toString() + 'x' + SPELLS[spells[i][0]][4] + '-';
       }
     }

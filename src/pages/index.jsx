@@ -406,13 +406,13 @@ export default function MainPage() {
                 <Grid container pt={2} direction='row' spacing={2} alignItems='flex-start' justifyContent='space-evenly'>
                     <Stack xs={12} sm={12} md={6} lg={6} xl={6} direction='column' spacing={1} alignItems='center' justifyContent='center'>
                         <Stack direction='row' spacing={2} pb={2} alignItems='center' justifyContent='center'>
-                            <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[0])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>TROOPS</Typography>
+                            <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[0])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>{'TROOPS ('+currentTroopsCapacity+'/'+MAX_TROOPS[currentTownHall]+')'}</Typography>
                             <Avatar src={barracksImages[MAX_BARRACKS[currentTownHall]-1]} variant='square' alt={'Barracks'} sx={{ width: 50, height: 50 }}/>
                         </Stack>
                         {arrayOnlyProp(pTroops,currentTownHall).map((index) => (    
                             <Stack direction='row' key={index[0]} spacing={2} alignItems='center' justifyContent='center'>
                                 <Avatar src={troopsImages[index[0]]} variant='square' alt={index[1]} sx={{ width: 66, height: 66 }}/>
-                                <Typography variant='body1' sx={{ minWidth: 150, textAlign:'center' }}>{index[1]}</Typography>
+                                <Typography sx={{ minWidth: 150, textAlign:'center' }}>{index[1]+' ('+index[2]+')'}</Typography>
                                 <TextField
                                 name={index[0].toString()}
                                 type={'number'}
@@ -428,14 +428,14 @@ export default function MainPage() {
                     <Stack xs={12} sm={12} md={6} lg={6} xl={6} direction='column' spacing={1} alignItems='center' justifyContent='center'>
                         {currentTownHall >= 7 ? 
                         <Stack direction='row' spacing={2} pb={2} alignItems='center' justifyContent='center'>
-                            <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[1])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>DARK TROOPS</Typography> 
+                            <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[1])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>{'DARK TROOPS ('+currentTroopsCapacity+'/'+MAX_TROOPS[currentTownHall]+')'}</Typography> 
                             <Avatar src={darkBarracksImages[MAX_DARK_BARRACKS[currentTownHall]-1]} variant='square' alt={'Dark Barracks'} sx={{ width: 50, height: 50 }}/>
                         </Stack>
                         : <></>}
                         {arrayOnlyProp(dTroops,currentTownHall).map((index) => (    
                             <Stack direction='row' key={index[0]} spacing={2} alignItems='center' justifyContent='center'>
                                 <Avatar src={troopsImages[index[0]]} variant='square' alt={index[1]} sx={{ width: 66, height: 66 }}/>
-                                <Typography sx={{ minWidth: 150, textAlign:'center' }}>{index[1]}</Typography>
+                                <Typography sx={{ minWidth: 150, textAlign:'center' }}>{index[1]+' ('+index[2]+')'}</Typography>
                                 <TextField
                                 name={index[0].toString()}
                                 type={'number'}
@@ -454,14 +454,14 @@ export default function MainPage() {
                     <Stack xs={12} sm={12} md={6} lg={6} xl={6} direction='column' spacing={1} alignItems='center' justifyContent='center'>
                         {currentTownHall >= 5 ?
                         <Stack direction='row' spacing={2} pb={2} alignItems='center' justifyContent='center'>
-                            <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[2])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>SPELLS</Typography> 
+                            <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[2])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>{'SPELLS ('+currentSpellsCapacity+'/'+MAX_SPELLS[currentTownHall]+')'}</Typography> 
                             <Avatar src={spellFactoryImages[MAX_SPELL_FACTORY[currentTownHall]-1]} variant='square' alt={'Spell Factory'} sx={{ width: 50, height: 50 }}/>
                         </Stack>
                         : <></>}
                         {arrayOnlyProp(pSpells,currentTownHall).map((index) => (    
                             <Stack direction='row' key={index[0]} spacing={2} alignItems='center' justifyContent='center'>
                                 <Avatar src={spellsImages[index[0]]} variant='square' alt={index[1]} sx={{ width: 66, height: 66 }}/>
-                                <Typography sx={{ minWidth: 150, textAlign:'center' }}>{index[1]}</Typography>
+                                <Typography sx={{ minWidth: 150, textAlign:'center' }}>{index[1]+' ('+index[2]+')'}</Typography>
                                 <TextField
                                 name={index[0].toString()}
                                 type={'number'}
@@ -477,14 +477,14 @@ export default function MainPage() {
                     <Stack xs={12} sm={12} md={6} lg={6} xl={6} direction='column' spacing={1} alignItems='center' justifyContent='center'>
                         {currentTownHall >= 8 ?
                         <Stack direction='row' spacing={2} pb={2} alignItems='center' justifyContent='center'> 
-                            <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[3])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>DARK SPELLS</Typography> 
+                            <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[3])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>{'DARK SPELLS ('+currentSpellsCapacity+'/'+MAX_SPELLS[currentTownHall]+')'}</Typography> 
                             <Avatar src={darkSpellFactoryImages[MAX_DARK_SPELL_FACTORY[currentTownHall]-1]} variant='square' alt={'Dark Spell Factory'} sx={{ width: 50, height: 50 }}/>
                         </Stack>
                         : <></>}
                         {arrayOnlyProp(dSpells,currentTownHall).map((index) => (    
                             <Stack direction='row' key={index[0]} spacing={2} alignItems='center' justifyContent='center'>
                                 <Avatar src={spellsImages[index[0]]} variant='square' alt={index[1]} sx={{ width: 66, height: 66 }}/>
-                                <Typography sx={{ minWidth: 150, textAlign:'center' }}>{index[1]}</Typography>
+                                <Typography sx={{ minWidth: 150, textAlign:'center' }}>{index[1]+' ('+index[2]+')'}</Typography>
                                 <TextField
                                 name={index[0].toString()}
                                 type={'number'}
@@ -503,14 +503,14 @@ export default function MainPage() {
                     <Stack xs={12} sm={12} md={6} lg={6} xl={6} direction='column' spacing={1} alignItems='center' justifyContent='center'>
                         {currentTownHall >= 11 ? 
                         <Stack direction='row' spacing={2} pb={2} alignItems='center' justifyContent='center'>
-                            <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[4])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>SUPER TROOPS</Typography>
+                            <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[4])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>{'SUPER TROOPS ('+currentBoostedUnits+'/'+MAX_BOOSTED[currentTownHall]+')'}</Typography>
                             <Avatar src={super_troops} variant='square' alt={'Super Troops'} sx={{ width: 33, height: 33 }}/>
                         </Stack>
                         : <></>}
                         {arrayOnlyProp(sTroops,currentTownHall).map((index) => (    
                             <Stack direction='row' key={index[0]} spacing={2} alignItems='center' justifyContent='center'>
                                 <Avatar src={troopsImages[index[0]]} variant='square' alt={index[1]} sx={{ width: 66, height: 66 }}/>
-                                <Typography sx={{ minWidth: 150, textAlign:'center' }}>{index[1]}</Typography>
+                                <Typography sx={{ minWidth: 150, textAlign:'center' }}>{index[1]+' ('+index[2]+')'}</Typography>
                                 <TextField
                                 name={index[0].toString()}
                                 type={'number'}
@@ -526,14 +526,14 @@ export default function MainPage() {
                     <Stack xs={12} sm={12} md={6} lg={6} xl={6} direction='column' spacing={1} alignItems='center' justifyContent='center'>
                         {currentTownHall >= 12 ? 
                         <Stack direction='row' spacing={2} pb={2} alignItems='center' justifyContent='center'>
-                            <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[5])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>SIEGE MACHINES</Typography>
+                            <Typography color={checkEmpty(divideArray(currentTroops,currentSpells)[5])} sx={{ fontSize: 18, fontWeight:'bold', textDecoration: 'underline' }}>{'SIEGE MACHINES ('+currentMachinesCapacity+'/'+MAX_MACHINES[currentTownHall]+')'}</Typography>
                             <Avatar src={workshopImages[MAX_WORKSHOP[currentTownHall]-1]} variant='square' alt={'Workshop'} sx={{ width: 50, height: 50 }}/>
                         </Stack>
                         : <></>}
                         {arrayOnlyProp(sMachines,currentTownHall).map((index) => (    
                             <Stack direction='row' key={index[0]} spacing={2} alignItems='center' justifyContent='center'>
                                 <Avatar src={troopsImages[index[0]]} variant='square' alt={index[1]} sx={{ width: 66, height: 66 }}/>
-                                <Typography sx={{ minWidth: 150, textAlign:'center' }}>{index[1]}</Typography>
+                                <Typography sx={{ minWidth: 150, textAlign:'center' }}>{index[1]+' ('+index[2]+')'}</Typography>
                                 <TextField
                                 name={index[0].toString()}
                                 type={'number'}

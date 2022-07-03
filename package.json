@@ -1,7 +1,7 @@
 {
-  "homepage": "https://sillonx.github.io/coc-army-planner/",
+  "homepage": "https://sillonx.github.io/coc-army-planner/#",
   "name": "coc-army-planner",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.3",

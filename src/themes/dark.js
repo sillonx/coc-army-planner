@@ -31,7 +31,7 @@ const DarkPalette = createTheme({
             main: '#1F8FFF'
         },
         success: {
-            main: '#5FFF1F'
+            main: '#52C425'
         },
         grey: {
 
