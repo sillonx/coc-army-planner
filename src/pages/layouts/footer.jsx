@@ -28,7 +28,7 @@ export default function Footer() {
             <BugReportIcon sx={{ color:'text.secondary' }}/>
             <Stack direction='row'>
               <Typography variant='body2' sx={{ color:'text.secondary' }}>
-                Report a bug : ping @6onx on&nbsp;
+                Report a bug : ping @sillonx on&nbsp;
               </Typography>
               <Link href='https://discord.gg/NMXt8kz' target='_blank' rel='noreferrer' variant='body2' sx={{ color:'text.secondary', '&:hover': { color:'info.main' } }}>
                   discord
