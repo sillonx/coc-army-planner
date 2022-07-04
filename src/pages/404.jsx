@@ -7,7 +7,7 @@ import {
   Button
 } from '@mui/material';
 
-import CottageIcon from '@mui/icons-material/Cottage';
+import HomeIcon from '@mui/icons-material/Home';
 
 
 export default function Error404() {
@@ -23,7 +23,7 @@ export default function Error404() {
       <Typography variant='h6'>
         ERROR 404 : this page wasn't found
       </Typography>
-      <Button size='large' variant='contained' onClick={returnHome} startIcon={<CottageIcon/>} sx={{ backgroundColor:'success.main', '&:hover': { backgroundColor:'success.main' } }}>
+      <Button size='large' variant='contained' onClick={returnHome} startIcon={<HomeIcon/>} sx={{ backgroundColor:'success.main', '&:hover': { backgroundColor:'success.main' } }}>
         Return Home
       </Button>
     </Stack>
