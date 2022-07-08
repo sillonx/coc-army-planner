@@ -24,6 +24,8 @@ Check it out [here](https://sillonx.github.io/coc-army-planner/#/)
 
 - Future Clash of Clans update supported
 
+- Bug fixes & code improvement
+
 
 ## Run Locally
 
