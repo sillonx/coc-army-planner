@@ -41,8 +41,8 @@ const LightPalette = createTheme({
             secondary: 'rgba(0,0,0,0.6)'
         },
         background: {
-            default: '#DEDEDE',
-            paper: '#FAFAFA'
+            default: '#FAFAFA',
+            paper: '#DEDEDE'
         },
         action: {
 

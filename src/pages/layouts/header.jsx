@@ -39,7 +39,7 @@ export default function Header() {
           <IconButton size='large' onClick={handleChange}>
             {cookies.mode === 'dark' ? 
             <DarkModeIcon sx={{ color:'common.white', backgroundColor:'background.default', borderRadius:5, boxShadow:5, width: 33, height: 33 }}/> : 
-            <LightModeIcon sx={{ color:'common.black', backgroundColor:'background.paper', borderRadius:5, boxShadow:5, width: 33, height: 33 }}/> }
+            <LightModeIcon sx={{ color:'common.black', backgroundColor:'background.default', borderRadius:5, boxShadow:5, width: 33, height: 33 }}/> }
           </IconButton>
         </Grid>
       </Grid>

@@ -20,6 +20,7 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ClearIcon from '@mui/icons-material/Clear';
+import BackspaceIcon from '@mui/icons-material/Backspace';
 
 //Variables imports
 import {
@@ -358,7 +359,7 @@ export default function MainPage() {
         navigator.clipboard.writeText(exportLink);
         setVisible(true);
         setTimeout(() => { setVisible(false); }, 2800);
-      }
+    }
 
     const clearAll = () => {
         setCurrentTroops(troopsTab);
@@ -384,11 +385,20 @@ export default function MainPage() {
         }
     }
 
+    const removeLink = () => {
+        setImportLink('');
+    }
+
 
     return (
         <>
             <Stack direction='column' pt={5} spacing={2} alignItems='center' justifyContent='center'>
-                <TextField sx={{ width:300 }} value={importLink} placeholder='https://link.clashofclans.com/en?action=CopyArmy&army=' onChange={(e) => setImportLink(e.target.value)} color='textfield' focused={importLink !== ''}></TextField>
+                <Stack pl={6} direction='row' spacing={1} alignItems='center' justifyContent='flex-end'>
+                    <TextField sx={{ width:300 }} value={importLink} placeholder='https://link.clashofclans.com/en?action=CopyArmy&army=' onChange={(e) => setImportLink(e.target.value)} color='textfield' focused={importLink !== ''}></TextField>
+                    <IconButton onClick={removeLink}>
+                        <BackspaceIcon/>
+                    </IconButton>
+                </Stack>
                 <Button size='large' variant='contained' onClick={importArmy} endIcon={<FileDownloadIcon/>} sx={{ borderRadius:'16px', backgroundColor:'buttons.main', '&:hover': { backgroundColor:'buttons.main', boxShadow: 5 } }}>Import</Button>
             </Stack>
 
@@ -550,7 +560,7 @@ export default function MainPage() {
             </Stack>
 
             <Stack direction='column' pt={7} pb={5} spacing={2} alignItems='center' justifyContent='center'>
-                <Stack pl={21} direction='row' spacing={1} alignItems='center' justifyContent='flex-end'>
+                <Stack pl={20} direction='row' spacing={1} alignItems='center' justifyContent='flex-end'>
                     <TextField value={exportLink} disabled={exportLink === ''} sx={{ width:300 }} color='textfield' focused={exportLink !== ''}/>
                     <IconButton onClick={copyClipboard}>
                         <ContentCopyIcon/>

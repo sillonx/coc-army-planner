@@ -18,7 +18,7 @@ export default function Footer() {
         <Stack p={2} spacing={1} direction='row' justifyContent='center' alignItems='center'>
           <GitHubIcon sx={{ color:'text.secondary' }}/>
           <Typography variant='body2' sx={{ color:'text.secondary' }}>
-            Website made with React and MUI, last updated 4 Jul. 2022
+            Website made with React and MUI, last updated 8 Jul. 2022
           </Typography>
         </Stack>
       </Grid>
