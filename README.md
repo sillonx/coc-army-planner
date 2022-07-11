@@ -27,7 +27,7 @@ Check it out [here](https://sillonx.github.io/coc-army-planner/#/)
 - Bug fixes & code improvement
 
 
-## Run Locally
+## Run Locally (requires [Node.js](https://nodejs.org/en/download/))
 
 Clone the project
 
@@ -61,5 +61,5 @@ If you have any feedback, please reach out to me on [Discord](https://discord.gg
 
 ## Disclaimer
 
-This material is unofficial and is not endorsed by Supercell. For more information see [Supercell's Fan Content Policy](www.supercell.com/fan-content-policy).
+This material is unofficial and is not endorsed by Supercell. For more information see [Supercell's Fan Content Policy](https://supercell.com/fan-content-policy).
 
