@@ -18,7 +18,7 @@ export default function Footer() {
         <Stack p={2} spacing={1} direction='row' justifyContent='center' alignItems='center'>
           <GitHubIcon sx={{ color:'text.secondary' }}/>
           <Typography variant='body2' sx={{ color:'text.secondary' }}>
-            Website made with React and MUI, last updated 8 Jul. 2022
+            Website made with React and MUI, last updated 11 Jul. 2022
           </Typography>
         </Stack>
       </Grid>
@@ -28,10 +28,10 @@ export default function Footer() {
             <BugReportIcon sx={{ color:'text.secondary' }}/>
             <Stack direction='row'>
               <Typography variant='body2' sx={{ color:'text.secondary' }}>
-                Report a bug : ping @sillonx on&nbsp;
+                Report a bug : create a new issue&nbsp;
               </Typography>
-              <Link href='https://discord.gg/NMXt8kz' target='_blank' rel='noreferrer' variant='body2' sx={{ color:'text.secondary', '&:hover': { color:'info.main' } }}>
-                  discord
+              <Link href='https://github.com/sillonx/coc-army-planner/issues/new' target='_blank' rel='noreferrer' variant='body2' sx={{ color:'text.secondary', '&:hover': { color:'info.main' } }}>
+                  here
               </Link>
             </Stack>
         </Stack>

@@ -1,8 +1,7 @@
 
 # CoC Army Planner
 
-Online tool to create Clash of Clans armies, built with React and Material UI\
-Check it out [here](https://sillonx.github.io/coc-army-planner/#/)
+Online tool to create Clash of Clans armies, built with React and Material UI. Check it out [here](https://sillonx.github.io/coc-army-planner/#/) !
 
 
 ## Contributors
@@ -56,7 +55,7 @@ Start the server
 
 ## Feedback
 
-If you have any feedback, please reach out to me on [Discord](https://discord.gg/NMXt8kz) @sillonx
+If you have any feedback, feel free to create an issue [here](https://github.com/sillonx/coc-army-planner/issues/new).
 
 
 ## Disclaimer
