@@ -1,32 +1,32 @@
-//[index, 'name', housingSpace, townhallRequired, 'idURL']
+//[index,'name',housingSpace,townhallRequired,'idURL']
 export const TROOPS = [ 
     //Troops
-    [0,'Barbarian', 1, 1, '0'],
-    [1,'Archer', 1, 1, '1'],
-    [2,'Giant', 5, 1, '3'],
-    [3,'Goblin', 1, 2, '2'],
-    [4,'Wall Breaker', 2, 3, '4'],
-    [5,'Balloon', 5, 4, '5'],
-    [6,'Wizard', 4, 5, '6'],
-    [7,'Healer', 14, 6, '7'],
-    [8,'Dragon', 20, 7, '8'],
-    [9,'P.E.K.K.A', 25, 8, '9'],
-    [10,'Baby Dragon', 10, 9, '23'],
-    [11,'Miner', 6, 10, '24'],
-    [12,'Electro Dragon', 30, 11, '59'],
-    [13,'Yeti', 18, 12, '53'],
-    [14,'Dragon Rider', 25, 13, '65'],
+    [0,'Barbarian',1,1,'0'],
+    [1,'Archer',1,1,'1'],
+    [2,'Giant',5,1,'3'],
+    [3,'Goblin',1,2,'2'],
+    [4,'Wall Breaker',2,3,'4'],
+    [5,'Balloon',5,4,'5'],
+    [6,'Wizard',4,5,'6'],
+    [7,'Healer',14,6,'7'],
+    [8,'Dragon',20,7,'8'],
+    [9,'P.E.K.K.A',25,8,'9'],
+    [10,'Baby Dragon',10,9,'23'],
+    [11,'Miner',6,10,'24'],
+    [12,'Electro Dragon',30,11,'59'],
+    [13,'Yeti',18,12,'53'],
+    [14,'Dragon Rider',25,13,'65'],
     
     //Dark Troops
-    [15,'Minion', 2, 7, '10'],
-    [16,'Hog Rider', 5, 7, '11'],
-    [17,'Valkyrie', 8, 8, '12'],
-    [18,'Golem', 30, 8, '13'],
-    [19,'Witch', 12, 9, '15'],
-    [20,'Lava Hound', 30, 9, '17'],
-    [21,'Bowler', 6, 10, '22'],
-    [22,'Ice Golem', 15, 11, '58'],
-    [23,'Headhunter', 6, 12, '82'],
+    [15,'Minion',2,7,'10'],
+    [16,'Hog Rider',5,7,'11'],
+    [17,'Valkyrie',8,8,'12'],
+    [18,'Golem',30,8,'13'],
+    [19,'Witch',12,9,'15'],
+    [20,'Lava Hound',30,9,'17'],
+    [21,'Bowler',6,10,'22'],
+    [22,'Ice Golem',15,11,'58'],
+    [23,'Headhunter',6,12,'82'],
   
     //Super Troops
     [24,'Super Barbarian',5,11,'26'],
@@ -45,31 +45,31 @@ export const TROOPS = [
     [37,'Super Bowler',30,12,'80'],
 
     //Siege Machines
-    [38,'Wall Wrecker', 1, 12, '51'],
-    [39,'BattleBlimp', 1, 12, '52'],
-    [40,'Stone Slammer', 1, 12, '62'],
-    [41,'Siege Barracks', 1, 13, '75'],
-    [42,'Log Launcher', 1, 13, '87'],
-    [43,'Flame Flinger', 1, 14, '91']
+    [38,'Wall Wrecker',1,12,'51'],
+    [39,'BattleBlimp',1,12,'52'],
+    [40,'Stone Slammer',1,12,'62'],
+    [41,'Siege Barracks',1,13,'75'],
+    [42,'Log Launcher',1,13,'87'],
+    [43,'Flame Flinger',1,14,'91']
 ];
 
-//[index, 'name', housingSpace, townhallRequired, 'idURL']
+//[index,'name',housingSpace,townhallRequired,'idURL']
 export const SPELLS = [
     //Spells
-    [0,'Lightning', 1, 5, '0'],
-    [1,'Healing', 2, 6, '1'],
-    [2,'Rage', 2, 7, '2'],
-    [3,'Jump', 2, 9, '3'],
-    [4,'Freeze', 1, 9, '5'],
-    [5,'Clone', 3, 10, '16'],
-    [6,'Invisibility', 1, 11, '35'],
+    [0,'Lightning',1,5,'0'],
+    [1,'Healing',2,6,'1'],
+    [2,'Rage',2,7,'2'],
+    [3,'Jump',2,9,'3'],
+    [4,'Freeze',1,9,'5'],
+    [5,'Clone',3,10,'16'],
+    [6,'Invisibility',1,11,'35'],
   
     //Dark Spells
-    [7,'Poison', 1, 8, '9'],
-    [8,'Earthquake', 1, 8, '10'],
-    [9,'Haste', 1, 9, '11'],
-    [10,'Skeleton', 1, 9, '17'],
-    [11,'Bat', 1, 10, '28']
+    [7,'Poison',1,8,'9'],
+    [8,'Earthquake',1,8,'10'],
+    [9,'Haste',1,9,'11'],
+    [10,'Skeleton',1,9,'17'],
+    [11,'Bat',1,10,'28']
 ];
 
 //TH_level : max_troops

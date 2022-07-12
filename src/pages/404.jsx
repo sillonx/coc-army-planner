@@ -14,7 +14,7 @@ export default function Error404() {
 
   const navigate = useNavigate();
 
-  const returnHome = (e) => {
+  const returnHome = () => {
     navigate('/');
   }
 

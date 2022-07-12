@@ -293,7 +293,7 @@ export default function MainPage() {
         setCurrentTroops(myTroops);
     } 
 
-    const importArmy = (e) => {
+    const importArmy = () => {
         var armyTab = decodeLink(importLink);
         let importedTroops = armyTab[0];
         let importedSpells = armyTab[1];
@@ -351,7 +351,7 @@ export default function MainPage() {
         setCurrentBoostedUnits(newBC);
     }
 
-    const exportArmy = (e) => {
+    const exportArmy = () => {
         setExportLink(encodeLink([currentTroops, currentSpells]));
     }
 
