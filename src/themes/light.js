@@ -52,7 +52,8 @@ const LightPalette = createTheme({
     },
     typography: {
         fontFamily: 'Arial',
-        fontSize: 14
+        fontSize: 14,
+        fontWeightBold: 1000
     }
 })
 
