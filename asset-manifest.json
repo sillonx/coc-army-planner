@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/coc-army-planner/static/js/main.6600942b.js",
+    "main.js": "/coc-army-planner/static/js/main.014b0acf.js",
     "static/js/787.4e3df400.chunk.js": "/coc-army-planner/static/js/787.4e3df400.chunk.js",
     "static/media/lightning.png": "/coc-army-planner/static/media/lightning.868a574bbab1a51f1962.png",
     "static/media/inferno_dragon.png": "/coc-army-planner/static/media/inferno_dragon.2f8655ff9a060fcb9e69.png",
@@ -116,10 +116,10 @@
     "static/media/super_dragon.png": "/coc-army-planner/static/media/super_dragon.0b74fa02d8b40489feea.png",
     "static/media/coc_logo.png": "/coc-army-planner/static/media/coc_logo.b1298a2825f5d58bc156.png",
     "index.html": "/coc-army-planner/index.html",
-    "main.6600942b.js.map": "/coc-army-planner/static/js/main.6600942b.js.map",
+    "main.014b0acf.js.map": "/coc-army-planner/static/js/main.014b0acf.js.map",
     "787.4e3df400.chunk.js.map": "/coc-army-planner/static/js/787.4e3df400.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.6600942b.js"
+    "static/js/main.014b0acf.js"
   ]
 }
